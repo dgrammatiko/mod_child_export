@@ -10,7 +10,7 @@ if (!modalElement) throw new Error('Broken Bootstrap modal');
 const body = modalElement.querySelector('.modal-body');
 
 async function onExport(event) {
-  const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&format=json&module=childexport&method=getZip&templateName=${event.target.dataset.template}&templateClient=${event.target.dataset.clientId}`);
+  const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&module=childexport&method=zip&templateName=${event.target.dataset.template}&templateClient=${event.target.dataset.clientId}&format=json`);
   const response = await fetch(url, { headers: { 'X-CSRF-Token': Joomla.getOptions('csrf.token') || '' } });
   if (!response.ok) {
     throw new Error('Not authorised?');
@@ -56,7 +56,7 @@ async function base64ToBlob(encoded) {
 async function createModalContent() {
   let responseData;
   let response;
-  const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&module=childexport&method=getChilds&format=json`);
+  const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&module=childexport&method=childs&format=json`);
   body.innerHTML = '';
   try {
     response = await fetch(url, { headers: { 'X-CSRF-Token': Joomla.getOptions('csrf.token') || '' } });

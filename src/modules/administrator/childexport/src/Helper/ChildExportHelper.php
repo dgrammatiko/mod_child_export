@@ -18,7 +18,7 @@ use ZipArchive;
 
 class ChildExportHelper
 {
-  public static function getChildsAjax()
+  public function childsAjax()
   {
     $app = Factory::getApplication();
     if (!$app->getSession()->checkToken() || !$app->getIdentity()->authorise('core.login.admin')) {
@@ -45,7 +45,7 @@ class ChildExportHelper
     return $res;
   }
 
-  public static function getZipAjax()
+  public function zipAjax()
   {
     $app = Factory::getApplication();
     if (!$app->getSession()->checkToken() || !$app->getIdentity()->authorise('core.login.admin')) {
