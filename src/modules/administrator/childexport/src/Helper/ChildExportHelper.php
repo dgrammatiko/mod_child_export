@@ -53,6 +53,7 @@ class ChildExportHelper
 
     $fileName      = uniqid() . '.zip';
     $zip           = new ZipArchive();
+    $version       = '1.0.0';
     $templateFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($templatePath), RecursiveIteratorIterator::LEAVES_ONLY);
     $mediaFiles    = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($templateMediaPath), RecursiveIteratorIterator::LEAVES_ONLY);
 
@@ -66,6 +67,7 @@ class ChildExportHelper
           // The XML might be missing the HTML folder entry
           $theXml        = simplexml_load_file($filePath);
           $hasHTMLFolder = false;
+          $version       = (string) $theXml->version;
 
           foreach($theXml->files as $xFiles) {
             if ($xFiles->getName() === 'html') {
@@ -100,6 +102,6 @@ class ChildExportHelper
     $theZipData = base64_encode(file_get_contents(JPATH_ADMINISTRATOR . '/cache/' . $fileName));
     unlink(JPATH_ADMINISTRATOR . '/cache/' . $fileName);
 
-    return ['test' => true, 'message' => 'in a bottle', 'blob' => $theZipData, 'version' => '1.0.0'];
+    return ['blob' => $theZipData, 'version' => $version];
   }
 }
