@@ -16,7 +16,7 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use ZipArchive;
 
-class ChildExportHelper
+class ChildexportHelper
 {
   public function childsAjax()
   {

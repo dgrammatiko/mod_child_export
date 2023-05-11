@@ -2,13 +2,13 @@
 <extension type="module" client="administrator" method="upgrade">
   <name>mod_childexport</name>
   <author>Dimitrios Grammatikogiannis</author>
-  <creationDate>2023-April</creationDate>
+  <creationDate>2023-05</creationDate>
   <copyright>2023 Dimitrios Grammatikogiannis</copyright>
   <license>License: GNU General Public License version 2 or later</license>
   <authorEmail>d.grammatiko@gmail.com</authorEmail>
   <authorUrl>https://dgrammatiko.dev</authorUrl>
   <version>{{version}}</version>
-  <description>Some description</description>
+  <description>MOD_CHILDEXPORT_DESCRIPTION</description>
   <namespace path="src">Dgrammatiko\Module\ChildExport</namespace>
   <files>
     <folder module="mod_childexport">services</folder>
