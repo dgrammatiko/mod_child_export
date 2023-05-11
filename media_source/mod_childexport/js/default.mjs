@@ -1,3 +1,6 @@
+if (!Joomla || !Joomla.Text || !Joomla.getOptions || !Joomla.sanitizeHtml) {
+  throw new Error('Joomla API is missing');
+}
 const modalButton = document.querySelector('.child-export-button');
 if (!modalButton) throw new Error('No Modal opener button found');
 const modalId = modalButton.dataset.bsTarget;
@@ -7,9 +10,7 @@ if (!modalElement) throw new Error('Broken Bootstrap modal');
 const body = modalElement.querySelector('.modal-body');
 
 async function onExport(event) {
-  const template = event.target.dataset.template;
-  const client = event.target.dataset.clientId;
-  const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&format=json&module=childexport&method=getZip&templateName=${template}&templateClient=${client}`);
+  const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&format=json&module=childexport&method=getZip&templateName=${event.target.dataset.template}&templateClient=${event.target.dataset.clientId}`);
   const response = await fetch(url, { headers: { 'X-CSRF-Token': Joomla.getOptions('csrf.token') || '' } });
   if (!response.ok) {
     throw new Error('Not authorised?');
@@ -22,8 +23,7 @@ async function onExport(event) {
     const link = document.createElement('a');
     link.href = urlBlob;
     link.innerText = urlBlob;
-    link.download = `${template}_v${responseData.data.version}.zip`;
-    event.target.parentNode.appendChild(link);
+    link.download = `${event.target.dataset.template}_v${responseData.data.version}.zip`;
     link.click();
   }
 
@@ -36,15 +36,10 @@ function createLiElements(data) {
   const ulElement = document.createElement('ul');
   ulElement.classList.add('row');
 
-  data.forEach((element) => {
-    const li = document.createElement('li');
-    li.classList.add('row', 'align-items-start');
-    li.innerHTML = Joomla.sanitizeHtml(`
+  data.forEach((element) => ulElement.insertAdjacentHTML('afterbegin', Joomla.sanitizeHtml(`<li class="row align-items-start">
 <h3 class="col mt-2">${element.template} [${element.client_id === 0 ? 'Site' : 'Administrator'}]</h3>
 <button type="button" class="col btn btn-success" data-template="${element.template}" data-client-id="${element.client_id}">${Joomla.Text._('MOD_CHILDEXPORT_BUTTON_EXPORT')}</button>
-<hr class="mt-1 mb-1">`);
-    ulElement.appendChild(li);
-  });
+<hr class="mt-1 mb-1"></li>`)));
 
   ulElement.querySelectorAll('button').forEach((button) => button.addEventListener('click', onExport));
 
@@ -59,17 +54,28 @@ async function base64ToBlob(encoded) {
 }
 
 async function createModalContent() {
+  let responseData;
+  let response;
   const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&format=json&module=childexport&method=getChilds`);
   body.innerHTML = '';
-  const response = await fetch(url, { headers: { 'X-CSRF-Token': Joomla.getOptions('csrf.token') || '' } });
-
-  if (!response.ok) {
+  try {
+    response = await fetch(url, { headers: { 'X-CSRF-Token': Joomla.getOptions('csrf.token') || '' } });
+  } catch (e) {
     body.innerHTML = '<h3 class="ms-2">Oops, something went wrong...</h3>';
+    return;
   }
 
-  const responseData = await response.json();
-
-  if (!responseData.data.length) {
+  if (!response || !response.ok) {
+    body.innerHTML = '<h3 class="ms-2">Oops, something went wrong...</h3>';
+    return;
+  }
+  try {
+    responseData = await response.json();
+  } catch (e) {
+    body.innerHTML = '<h3 class="ms-2">No child templates found</h3>';
+    return;
+  }
+  if (!responseData.data || !responseData.data.length) {
     body.innerHTML = '<h3 class="ms-2">No child templates found</h3>';
     return;
   }

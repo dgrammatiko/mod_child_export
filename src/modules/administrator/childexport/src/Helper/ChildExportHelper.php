@@ -28,11 +28,21 @@ class ChildExportHelper
     $db     = Factory::getContainer()->get(DatabaseInterface::class);
     $query  = $db->getQuery(true)
       ->select('*')
-      ->from($db->quoteName('#__template_styles'))
-      ->where($db->quoteName('parent') . ' != "" ');
+      ->from($db->quoteName('#__template_styles'));
     $db->setQuery($query);
 
-    return $db->loadObjectList();
+    $results = $db->loadObjectList();
+    $res     = [];
+    $names   = [];
+
+    foreach($results as $result) {
+      if ($result->inheritable === 0 && $result->parent !== '' && !in_array($result->template, $names)) {
+        $res[]   = $result;
+        $names[] = $result->template;
+      }
+    }
+
+    return $res;
   }
 
   public static function getZipAjax()
