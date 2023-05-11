@@ -7,11 +7,11 @@
   <license>License: GNU General Public License version 2 or later</license>
   <authorEmail>d.grammatiko@gmail.com</authorEmail>
   <authorUrl>https://dgrammatiko.dev</authorUrl>
-  <version>0.0.1</version>
+  <version>{{version}}</version>
   <description>Some description</description>
   <namespace path="src">Dgrammatiko\Module\ChildExport</namespace>
   <files>
-    <folder module="childexport">services</folder>
+    <folder module="mod_childexport">services</folder>
     <folder>src</folder>
     <folder>tmpl</folder>
     <folder>language</folder>
