@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="administrator" method="upgrade">
+  <name>mod_childexport</name>
+  <author>Dimitrios Grammatikogiannis</author>
+  <creationDate>2023-April</creationDate>
+  <copyright>2023 Dimitrios Grammatikogiannis</copyright>
+  <license>License: GNU General Public License version 2 or later</license>
+  <authorEmail>d.grammatiko@gmail.com</authorEmail>
+  <authorUrl>https://dgrammatiko.dev</authorUrl>
+  <version>0.0.1</version>
+  <description>Some description</description>
+  <namespace path="src">Dgrammatiko\Module\ChildExport</namespace>
+  <files>
+    <folder module="childexport">services</folder>
+    <folder>src</folder>
+    <folder>tmpl</folder>
+    <folder>language</folder>
+  </files>
+  <media folder="media" destination="mod_childexport">
+    <folder>js</folder>
+  </media>
+</extension>

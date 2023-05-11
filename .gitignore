@@ -1,0 +1,14 @@
+
+# Node
+node_modules
+
+# Do not commit
+ignore
+
+# Server
+www
+
+# Temp folders
+media
+packages
+languages
