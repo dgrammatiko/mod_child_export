@@ -5,10 +5,13 @@
  */
 
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper;
 
 defined('_JEXEC') || die();
 
 Text::script('MOD_CHILDEXPORT_BUTTON_EXPORT');
+
+HTMLHelper::_('form.csrf');
 
 /** @var $app \Joomla\CMS\Application\CMSApplication */
 $app

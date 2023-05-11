@@ -56,7 +56,7 @@ async function base64ToBlob(encoded) {
 async function createModalContent() {
   let responseData;
   let response;
-  const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&format=json&module=childexport&method=getChilds`);
+  const url = new URL(`${Joomla.getOptions('system.paths').baseFull}index.php?option=com_ajax&module=childexport&method=getChilds&format=json`);
   body.innerHTML = '';
   try {
     response = await fetch(url, { headers: { 'X-CSRF-Token': Joomla.getOptions('csrf.token') || '' } });
