@@ -79,8 +79,8 @@ class ChildexportHelper
           $hasHTMLFolder = false;
           $version       = (string) $theXml->version;
 
-          foreach($theXml->files as $xFiles) {
-            if ($xFiles->getName() === 'html') {
+          foreach($theXml->{'files'}->children() as $xFiles) {
+            if ((string) $xFiles === 'html') {
               $hasHTMLFolder = true;
             }
           }
