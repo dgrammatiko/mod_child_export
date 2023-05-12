@@ -1,6 +1,6 @@
 {
   "name": "childexport",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "scripts": {
     "get-joomla": "node joomla-tools.mjs -i",
     "link": "joomla-tools -l",
@@ -17,7 +17,7 @@
     "libraries": [],
     "modules": {
       "administrator": [
-        {"name": "childexport", "version": "0.0.6"}
+        {"name": "childexport", "version": "1.0.0"}
       ],
       "site": []
     },
