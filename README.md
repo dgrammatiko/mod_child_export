@@ -1,6 +1,6 @@
 # mod_child_export
 
-# Disclaimer: This module was created so that web agencies/shops could roll installables for their **OWN** work. If you plan to mass distribute child templates **DO NOT** use this software and please reconsider, a broken platform by abused features is no a platform users will ever trust. Thanks!
+# Disclaimer: This module was created so web agencies/shops could roll installables for their OWN work. If you plan to mass distribute child templates, DO NOT use this software, and please reconsider. A broken platform by abused features is not a platform that users will ever trust. Thanks!
 
 
 A very simple (administrator) module that allows to export child templates as installable zip files.
