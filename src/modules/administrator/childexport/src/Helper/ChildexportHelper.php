@@ -94,6 +94,9 @@ class ChildexportHelper
         }
       } elseif ($relativePath !== false) {
         $zip->addEmptyDir($relativePath);
+        if ($relativePath !== '') {
+          $zip->addFromString($relativePath . '/index.html', '<!DOCTYPE html><title></title>');
+        }
       }
     }
 
@@ -104,6 +107,7 @@ class ChildexportHelper
         $zip->addFile($filePath, $relativePath);
       } elseif ($relativePath !== false) {
         $zip->addEmptyDir($relativePath);
+        $zip->addFromString($relativePath . '/index.html', '<!DOCTYPE html><title></title>');
       }
     }
 
