@@ -1,9 +1,14 @@
 # mod_child_export
 
+# Disclaimer: This module was created so that web agencies/shops could roll installables for their **OWN** work. If you plan to mass distribute child templates **DO NOT** use this software and please reconsider, a broken platform by abused features is no a platform users will ever trust. Thanks!
+
+
 A very simple (administrator) module that allows to export child templates as installable zip files.
 The module should be placed in the position `cpanel` and by default adds only a button, a javascript and an inner modal (ie, won't degrade your performace compared to other things that have many database queries, etc).
 
 ## Mini docs
+
+Download the latest release form: https://github.com/dgrammatiko/mod_child_export/releases
 
 After installing the module and checking the Administrator Modules you wiil find a new module on the top of the list.
 
