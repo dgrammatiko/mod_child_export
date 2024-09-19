@@ -61,7 +61,7 @@
     "stylelint": "16.9.0",
     "stylelint-config-standard": "36.0.1",
     "stylelint-order": "6.0.4",
-    "stylelint-scss": "6.6.0"
+    "stylelint-scss": "6.7.0"
   },
   "dependencies": {
     "@dgrammatiko/joomla-tools": "^0.0.365"
