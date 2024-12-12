@@ -53,7 +53,7 @@
   },
   "joomlaVersion": "4.3.0",
   "devDependencies": {
-    "@dgrammatiko/joomla-tools": "0.0.439",
+    "@dgrammatiko/joomla-tools": "0.0.440",
     "eslint": "9.16.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.31.0",
@@ -64,6 +64,6 @@
     "stylelint-scss": "6.10.0"
   },
   "dependencies": {
-    "@dgrammatiko/joomla-tools": "^0.0.439"
+    "@dgrammatiko/joomla-tools": "^0.0.440"
   }
 }
