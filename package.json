@@ -59,7 +59,7 @@
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-vue": "9.32.0",
     "stylelint": "16.13.2",
-    "stylelint-config-standard": "36.0.1",
+    "stylelint-config-standard": "37.0.0",
     "stylelint-order": "6.0.4",
     "stylelint-scss": "6.10.0"
   },
